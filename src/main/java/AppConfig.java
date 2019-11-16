@@ -1,6 +1,9 @@
 //import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 //import com.pluralsight.repository.CustomerRepository;
 //import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
@@ -9,7 +12,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan({"com.pluralsight"})
+@PropertySource("app.properties")
 public class AppConfig {
+
+    // For accessing app.properties
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
     // With setter injection
 //	@Bean(name = "customerService")
